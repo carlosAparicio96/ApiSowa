@@ -6,9 +6,11 @@ import {
   listaUsuario,
   obtenerUsuario,
   newIngrediente,
-  listaIngrediente
+  listaIngrediente,
+  completeRec
 } from './model'
 import { response } from 'express';
+import { createPool } from 'mysql';
 var jwt = require('jsonwebtoken');
 
 /* export const obtenerUsuario = (req, res) => {
@@ -122,15 +124,26 @@ function decifrateToken(token) {
 //--Receta--//
 
 export const nuevaReceta = (req, res) => {
-  console.log('nueva receta')
   newReceta(req.body)
     .then(result => {
-      res.json(response)
+      console.log("respuesta nueva receta = ",result.insertId)
+      res.json(result)
     })
     .catch(error => {
       res.json(error)
     })
 }
+
+export const completarReceta = (req, res) => {
+  completeRec(req.body)
+    .then(result => {
+      res.json(result)
+    })
+    .catch(error => {
+      res.json(error)
+    })
+}
+
 
 export const eliminarReceta= (req, res) => {
   var id = req.params.id
@@ -156,10 +169,10 @@ export const ingrediente = (req, res) => {
 
 export const obtenerIng = (req, res) => {
   console.log('obtener ingrediente')
-  listaIngrediente(req.body)
+  listaIngrediente()
     .then(result => {
       console.log(result,"acaaa")
-      res.json(response)
+      res.json(result)
     })
     .catch(error => {
       res.json(error)
