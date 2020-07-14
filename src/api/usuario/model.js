@@ -150,17 +150,17 @@ export const borrarReceta = id => {
     connection.end()
   })
 }
-export const completeRec = datos => {
+export const completarIngredientes = datos => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
     var dats = [
-      datos.ingredientes,
-      datos.pasoRec,
-      datos.id
+      datos.ingrediente,
+      datos.cantidad,
+      datos.idReceta
     ]
     var sql =
-      'insert into Receta(ingredientes,pasoRec) values (?) where idReceta =id'
+      'INSERT into ingredientesReceta(ingrediente,cantidad,idReceta) values (?)'
     connection.query(sql, [dats], (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
@@ -168,6 +168,26 @@ export const completeRec = datos => {
     connection.end()
   })
 }
+
+export const completePasos = datos => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats = [
+      datos.nPaso,
+      datos.descripcion,
+      datos.idReceta
+    ]
+    var sql =
+      'INSERT into pasosRec(nPaso,descripcion,idReceta) values (?)'
+    connection.query(sql, [dats], (error, results, field) => {
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
 
 export const newReceta = datos => {
   return new Promise((resolve, reject) => {

@@ -7,7 +7,8 @@ import {
   obtenerUsuario,
   newIngrediente,
   listaIngrediente,
-  completeRec
+  completarIngredientes,
+  completePasos
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
@@ -134,8 +135,20 @@ export const nuevaReceta = (req, res) => {
     })
 }
 
-export const completarReceta = (req, res) => {
-  completeRec(req.body)
+export const completarIng = (req, res) => {
+  console.log("controller",req.body)
+  completarIngredientes(req.body)
+    .then(result => {
+      res.json(result)
+    })
+    .catch(error => {
+      res.json(error)
+    })
+}
+
+export const completarPasos = (req, res) => {
+  console.log("controller",req.body)
+  completePasos(req.body)
     .then(result => {
       res.json(result)
     })
