@@ -16,7 +16,8 @@ import {
   ingrediente,
   obtenerIng,
   completarIng,
-  completarPasos
+  completarPasos,
+  addIngDespensa
 } from './controller'
 const router = new Router()
 /* router.post('/children', obtenerHijos)
@@ -33,7 +34,8 @@ router.delete('/:id',eliminarReceta)
 router.post('/registro',registrarUsuario)
 router.post('/iniciar',inicioSesion)
 router.post('/ingrediente',ingrediente)
-router.get('/obtenerIng',obtenerIng)
+router.get('/obtenerIng',obtenerIng) 
+router.post('/addDespensa',addIngDespensa)
 
 /* router.post('/:id', obtenerApoderado)
 router.get('', obtenerApoderados)

@@ -8,7 +8,8 @@ import {
   newIngrediente,
   listaIngrediente,
   completarIngredientes,
-  completePasos
+  completePasos,
+  addIng
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
@@ -235,3 +236,17 @@ export const inicioSesion = (req, res) => {
       }
     )
   }
+
+  //--Despensa--//
+
+  export const addIngDespensa = (req, res) => {
+    console.log("controller",req.body)
+    addIng(req.body)
+      .then(result => {
+        res.json(result)
+      })
+      .catch(error => {
+        res.json(error)
+      })
+  }
+  
