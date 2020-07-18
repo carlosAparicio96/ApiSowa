@@ -236,7 +236,7 @@ export const listaIngrediente = () => {
         else resolve(results)
       }
     )
-    connection.end()
+    connection.end() 
   })
 }
 
@@ -313,4 +313,24 @@ export const listaUsuario = () => {
   })
 }
 
+//--Despensa--//
+
+export const addIng = datos => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats = [
+      datos.idUsuario,
+      datos.idIngred,
+      datos.cantidad
+    ]
+    var sql =
+      'insert into Despensa(idUsuario, idIngred, cantidad) values (?)'
+    connection.query(sql, [dats], (error, results, field) => {
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
 
