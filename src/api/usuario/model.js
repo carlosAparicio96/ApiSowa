@@ -230,7 +230,7 @@ export const listaIngrediente = () => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.query(
-      'select nombreIngrediente from Ingrediente',
+      'select * from Ingrediente',
       (error, results, field) => {
         if (error) reject(error)
         else resolve(results)
