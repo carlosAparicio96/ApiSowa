@@ -389,3 +389,35 @@ export const addIng = datos => {
   })
 }
 
+export const obtenerIngDespensa = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idUsuario,
+    ]
+    var sql = 'select idIngred,cantidad from Despensa where idUsuario=?'
+    connection.query(sql, dats, (error, results, field) => {
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+export const borrarIngDespensa = datos => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      datos.idUsuario,
+      datos.idIngred,
+    ]
+    var sql = 'DELETE FROM Despensa WHERE (idUsuario, idIngred) = (?)'
+    connection.query(sql, dats, (error, results, field) => {
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}

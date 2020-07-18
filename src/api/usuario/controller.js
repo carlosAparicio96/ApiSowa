@@ -12,7 +12,9 @@ import {
   obtenerReceta,
   obtenerPasos,
   obtenerIngReceta,
-  addIng
+  addIng,
+  obtenerIngDespensa,
+  borrarIngDespensa
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
@@ -300,4 +302,30 @@ export const getIngReceta = (req, res) => {
         res.json(error)
       })
   }
+
+  export const getIngDespensa = (req, res) => {
+    console.log("Get Ing Despensa",req)
+    obtenerIngDespensa(req.body).then(
+      result => {
+        console.log(result,"resultado Get Ing Despensa")
+        res.send(result)
+      },
+      error => {
+        console.log('ERRORAZO Get Ing Despensa')
+        res.json({ error: error })
+      }
+    )
+  }
+
+  export const eliminarIngDesp= (req, res) => {
+    borrarIngDespensa(req.body)
+      .then(result => {
+        res.json(response)
+      })
+      .catch(error => {
+        res.json(error)
+      })
+  }
+
+  
   
