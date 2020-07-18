@@ -313,6 +313,61 @@ export const listaUsuario = () => {
   })
 }
 
+//--Querys para mostrar la receta completa--//
+
+export const obtenerReceta = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idReceta,
+    ]
+    var sql = 'select * from Receta where idReceta=?'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+export const obtenerPasos = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idReceta,
+    ]
+    var sql = 'select * from pasosRec where idReceta=? ORDER BY nPaso'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+export const obtenerIngReceta = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idReceta,
+    ]
+    var sql = 'select * from ingredientesReceta where idReceta=?'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+
+
 //--Despensa--//
 
 export const addIng = datos => {

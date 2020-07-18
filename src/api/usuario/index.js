@@ -17,7 +17,10 @@ import {
   obtenerIng,
   completarIng,
   completarPasos,
-  addIngDespensa
+  addIngDespensa,
+  getReceta,
+  getPasos,
+  getIngReceta
 } from './controller'
 const router = new Router()
 /* router.post('/children', obtenerHijos)
@@ -36,6 +39,10 @@ router.post('/iniciar',inicioSesion)
 router.post('/ingrediente',ingrediente)
 router.get('/obtenerIng',obtenerIng) 
 router.post('/addDespensa',addIngDespensa)
+router.post('/getReceta',getReceta)
+router.post('/getPasos',getPasos)
+router.post('/getIngReceta',getIngReceta)
+
 
 /* router.post('/:id', obtenerApoderado)
 router.get('', obtenerApoderados)

@@ -9,10 +9,14 @@ import {
   listaIngrediente,
   completarIngredientes,
   completePasos,
+  obtenerReceta,
+  obtenerPasos,
+  obtenerIngReceta,
   addIng
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
+import { get } from 'request-promise';
 var jwt = require('jsonwebtoken');
 
 /* export const obtenerUsuario = (req, res) => {
@@ -236,6 +240,53 @@ export const inicioSesion = (req, res) => {
       }
     )
   }
+
+//--funciones Para mostrar una receta completa--//
+
+export const getReceta = (req, res) => {
+  console.log("Controller get Receta", req.body)
+  obtenerReceta(req.body).then(
+    result => { 
+      console.log("resultado get resta",result)
+      res.send(result)
+    },
+    error => {
+      console.log('ERRORAZO Get Receta')
+      res.json({ error: error })
+    }
+  )
+}
+
+export const getPasos = (req, res) => {
+  console.log("Get Pasos",req)
+  obtenerPasos(req.body).then(
+    result => {
+      console.log(result,"resultado Get Pasos")
+      res.send(result)
+    },
+    error => {
+      console.log('ERRORAZO Get Pasos')
+      res.json({ error: error })
+    }
+  )
+}
+export const getIngReceta = (req, res) => {
+  console.log("Get Ing Receta",req)
+  obtenerIngReceta(req.body).then(
+    result => {
+      console.log(result,"resultado Get Ing Receta")
+      res.send(result)
+    },
+    error => {
+      console.log('ERRORAZO Get Ing Receta')
+      res.json({ error: error })
+    }
+  )
+}
+
+
+
+
 
   //--Despensa--//
 
