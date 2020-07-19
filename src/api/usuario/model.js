@@ -406,6 +406,8 @@ export const addIng = datos => {
   })
 }
 
+// Updated upstream
+
 export const obtenerIngDespensa = dato => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
@@ -443,5 +445,123 @@ export const borrarIngDespensa = datos => {
 
   
 }
+
+
+// Claudio Modificar Usuario
+
+// Modificar Nombre Usuario
+
+export const ModUsuarioNombre = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.nombreUsr,
+      dato.idUsuario,
+    ]
+    var sql = 'update Usuario Set nombreUsr=? where idUsuario=?'
+    connection.query(sql, dato, (error, results, field) => {  
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+// Modificar Correo Usuario
+
+export const ModUsuarioCorreo = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.correo,
+      dato.idUsuario,
+    ]
+    var sql = 'update Usuario Set correo=? where idUsuario=?'
+    connection.query(sql, dato, (error, results, field) => {  
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+// Modificar Password Usuario
+
+export const ModUsuarioPassword = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.password,
+      dato.idUsuario,
+    ]
+    var sql = 'update Usuario Set password=? where idUsuario=?'
+    connection.query(sql, dato, (error, results, field) => {  
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+// Buscar Nombre usuario
+
+export const consultaNombreUsuario = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idUsuario,
+    ]
+    var sql = 'select nombreUsr from Usuario where idUsuario=?'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+// Buscar Correo usuario
+
+export const consultaCorreoUsuario = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idUsuario,
+    ]
+    var sql = 'select correo from Usuario where idUsuario=?'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
+// Buscar Password Usuario
+
+export const consultaCorreoUsuario = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idUsuario,
+    ]
+    var sql = 'select password from Usuario where idUsuario=?'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+
 
 
