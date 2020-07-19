@@ -413,7 +413,10 @@ export const obtenerIngDespensa = dato => {
     var dats= [
       dato.idUsuario,
     ]
-    var sql = 'select idIngred,cantidad from Despensa where idUsuario=?'
+    var sql = 'select d.idIngred,i.nombreIngrediente,d.cantidad from Despensa d '
+            + 'inner join Ingrediente i '
+            + 'on d.idIngred = i.idIngrediente '
+            + 'where d.idUsuario=?'
     connection.query(sql, dats, (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
@@ -437,4 +440,8 @@ export const borrarIngDespensa = datos => {
     })
     connection.end()
   })
+
+  
 }
+
+
