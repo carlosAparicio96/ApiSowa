@@ -15,7 +15,8 @@ import {
   addIng,
   obtenerIngDespensa,
   borrarIngDespensa,
-  getUsuarioId
+  getUsuarioId,
+  consultaCorreoUsuario
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';

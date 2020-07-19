@@ -546,7 +546,7 @@ export const consultaCorreoUsuario = dato => {
 
 // Buscar Password Usuario
 
-export const consultaCorreoUsuario = dato => {
+/* export const consultaCorreoUsuario = dato => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
@@ -555,13 +555,12 @@ export const consultaCorreoUsuario = dato => {
     ]
     var sql = 'select password from Usuario where idUsuario=?'
     connection.query(sql, dats, (error, results, field) => {
-     /*  console.log(results,"esta wea",results.length," - ",field) */
       if (error) reject(error)
       else resolve(results)
     })
     connection.end()
   })
 }
-
+ */
 
 
