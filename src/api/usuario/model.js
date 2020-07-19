@@ -197,10 +197,11 @@ export const newReceta = datos => {
       datos.nombreRec,
       datos.tipoRec,
       datos.descripcion,
+      datos.fotoRec,
       datos.idUsuario
     ]
     var sql =
-      'insert into Receta(nombreRec,tipoRec,descripcion,idUsuario) values (?)'
+      'insert into Receta(nombreRec,tipoRec,descripcion,fotoRec,idUsuario) values (?)'
     connection.query(sql, [dats], (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
@@ -271,6 +272,22 @@ export const consultaUsuario = dato => {
       dato.correo,
     ]
     var sql = 'select * from Usuario where correo=?'
+    connection.query(sql, dats, (error, results, field) => {
+     /*  console.log(results,"esta wea",results.length," - ",field) */
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
+export const getUsuarioId = dato => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats= [
+      dato.idUsuario,
+    ]
+    var sql = 'select usuario from Usuario where idUsuario=?'
     connection.query(sql, dats, (error, results, field) => {
      /*  console.log(results,"esta wea",results.length," - ",field) */
       if (error) reject(error)

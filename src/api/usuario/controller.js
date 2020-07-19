@@ -14,7 +14,8 @@ import {
   obtenerIngReceta,
   addIng,
   obtenerIngDespensa,
-  borrarIngDespensa
+  borrarIngDespensa,
+  getUsuarioId
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
@@ -243,6 +244,21 @@ export const inicioSesion = (req, res) => {
     )
   }
 
+  export const getUsuario = (req, res) => {
+    console.log("get usuario id")
+    getUsuarioId(req.body).then(
+      result => {
+        console.log(result,"acaaa")
+        res.send(result)
+      },
+      error => {
+        console.log('ERRORAZO')
+        res.json({ error: error })
+      }
+    )
+  }
+
+
 //--funciones Para mostrar una receta completa--//
 
 export const getReceta = (req, res) => {
@@ -260,7 +276,7 @@ export const getReceta = (req, res) => {
 }
 
 export const getPasos = (req, res) => {
-  console.log("Get Pasos",req)
+  console.log("Get Pasos")
   obtenerPasos(req.body).then(
     result => {
       console.log(result,"resultado Get Pasos")
@@ -273,10 +289,10 @@ export const getPasos = (req, res) => {
   )
 }
 export const getIngReceta = (req, res) => {
-  console.log("Get Ing Receta",req)
+  console.log("Get Ing Receta")
   obtenerIngReceta(req.body).then(
     result => {
-      console.log(result,"resultado Get Ing Receta")
+      console.log("resultado Get Ing Receta",result)
       res.send(result)
     },
     error => {
