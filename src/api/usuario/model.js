@@ -406,19 +406,17 @@ export const addIng = datos => {
   })
 }
 
-// Updated upstream
-
-export const obtenerIngDespensa = dato => {
+export const obtenerIngDespensa = data => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
     var dats= [
-      dato.idUsuario,
+      data.idUsuario,
     ]
     var sql = 'select d.idIngred,i.nombreIngrediente,d.cantidad from Despensa d '
             + 'inner join Ingrediente i '
             + 'on d.idIngred = i.idIngrediente '
-            + 'where d.idUsuario=?'
+            + 'where idUsuario = ? '
     connection.query(sql, dats, (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
@@ -546,7 +544,7 @@ export const consultaCorreoUsuario = dato => {
 
 // Buscar Password Usuario
 
-/* export const consultaCorreoUsuario = dato => {
+/*export const consultaCorreoUsuario = dato => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
@@ -555,12 +553,13 @@ export const consultaCorreoUsuario = dato => {
     ]
     var sql = 'select password from Usuario where idUsuario=?'
     connection.query(sql, dats, (error, results, field) => {
+      console.log(results,"esta wea",results.length," - ",field) 
       if (error) reject(error)
       else resolve(results)
     })
     connection.end()
   })
-}
- */
+}*/
+
 
 

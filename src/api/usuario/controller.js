@@ -15,8 +15,8 @@ import {
   addIng,
   obtenerIngDespensa,
   borrarIngDespensa,
-  getUsuarioId,
-  consultaCorreoUsuario
+  getUsuarioId
+
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
@@ -319,13 +319,14 @@ export const getIngReceta = (req, res) => {
         res.json(error)
       })
   }
+  
 
   export const getIngDespensa = (req, res) => {
-    console.log("Get Ing Despensa",req)
-    obtenerIngDespensa(req.body).then(
+    console.log("Aca va el id",req.query)
+    obtenerIngDespensa(req.query).then(
       result => {
         console.log(result,"resultado Get Ing Despensa")
-        res.send(result)
+        res.json(result)
       },
       error => {
         console.log('ERRORAZO Get Ing Despensa')
