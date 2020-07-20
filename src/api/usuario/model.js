@@ -261,7 +261,7 @@ export const listaMisRecetas = datos => {
       datos.idUsuario
     ]
     var sql =
-        'select * from Receta where idUsuario=?'
+      'select * from Receta where idUsuario=?'
     connection.query(sql, [dats], (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
@@ -269,7 +269,6 @@ export const listaMisRecetas = datos => {
     connection.end()
   })
 }
-
 
 //---usuarios--//
 

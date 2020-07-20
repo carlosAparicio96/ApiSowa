@@ -214,9 +214,10 @@ export const allRecetas = (req, res) => {
       res.json(error)
     })
 }
+
 export const misRecetas = (req, res) => {
-  console.log('obtener mis las recetas')
-  listaMisRecetas()
+  console.log('obtener mis recetas',req.body)
+  listaMisRecetas(req.body)
     .then(result => {
       console.log(result,"acaaa")
       res.json(result)
