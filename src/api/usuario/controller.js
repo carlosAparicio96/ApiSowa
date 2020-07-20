@@ -17,7 +17,8 @@ import {
   borrarIngDespensa,
   getUsuarioId,
   listaRecetas,
-  listaMisRecetas
+  listaMisRecetas,
+  consultaNombreUsuario
 
 } from './model'
 import { response } from 'express';
@@ -276,6 +277,19 @@ export const inicioSesion = (req, res) => {
     getUsuarioId(req.body).then(
       result => {
         console.log(result,"acaaa")
+        res.send(result)
+      },
+      error => {
+        console.log('ERRORAZO')
+        res.json({ error: error })
+      }
+    )
+  }
+  export const BuscarNombreUsuario = (req, res) => {
+    console.log("get usuario id")
+    consultaNombreUsuario(req.body).then(
+      result => {
+        console.log(result[1],"acaaa")
         res.send(result)
       },
       error => {
