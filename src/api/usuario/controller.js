@@ -20,8 +20,8 @@ import {
   listaMisRecetas,
   consultaNombreUsuario,
   consultaCorreoUsuario,
-  consultaPasswordUsuario
-
+  consultaPasswordUsuario,
+  ModUsuarioNombre
 } from './model'
 import { response } from 'express';
 import { createPool } from 'mysql';
@@ -316,6 +316,19 @@ export const inicioSesion = (req, res) => {
   export const BuscarPasswordUsuario = (req, res) => {
     console.log("get usuario id",req.body)
     consultaPasswordUsuario(req.body).then(
+      result => {
+        console.log(result,"acaaa")
+        res.send(result)
+      },
+      error => {
+        console.log('ERRORAZO')
+        res.json({ error: error })
+      }
+    )
+  }
+  export const ModificarNombreUsuario = (req, res) => {
+    console.log("get usuario id",req.body)
+    ModUsuarioNombre(req.body).then(
       result => {
         console.log(result,"acaaa")
         res.send(result)

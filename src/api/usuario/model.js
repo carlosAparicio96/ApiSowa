@@ -583,7 +583,7 @@ export const consultaPasswordUsuario = dato => {
     ]
     var sql = 'select password from Usuario where idUsuario=?'
     connection.query(sql, dats, (error, results, field) => {
-      console.log(results,"esta wea",results.length," - ",field) 
+      //console.log(results,"esta wea",results.length," - ",field) 
       if (error) reject(error)
       else resolve(results)
     })
