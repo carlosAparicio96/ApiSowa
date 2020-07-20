@@ -23,7 +23,9 @@ import {
   getIngReceta,
   getIngDespensa,
   eliminarIngDesp,
-  getUsuario
+  getUsuario,
+  allRecetas,
+  misRecetas
 } from './controller'
 const router = new Router()
 /* router.post('/children', obtenerHijos)
@@ -48,8 +50,8 @@ router.post('/getIngReceta',getIngReceta)
 router.get('/getIngredDespensa',getIngDespensa)
 router.post('/deleteIngDesp',eliminarIngDesp)
 router.post('/getUsuario',getUsuario)
-
-
+router.get('/getAllRecetas',allRecetas)
+router.post('/getMisRecetas',misRecetas)
 
 /* router.post('/:id', obtenerApoderado)
 router.get('', obtenerApoderados)

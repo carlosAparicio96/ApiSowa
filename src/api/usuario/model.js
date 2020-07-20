@@ -240,6 +240,35 @@ export const listaIngrediente = () => {
     connection.end() 
   })
 }
+export const listaRecetas = () => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.query(
+      'select * from Receta ORDER BY idReceta',
+      (error, results, field) => {
+        if (error) reject(error)
+        else resolve(results)
+      }
+    )
+    connection.end() 
+  })
+}
+export const listaMisRecetas = datos => {
+  return new Promise((resolve, reject) => {
+    const connection = mysql.createConnection(mysqlConfig)
+    connection.connect()
+    var dats = [
+      datos.idUsuario
+    ]
+    var sql =
+        'select * from Receta where idUsuario=?'
+    connection.query(sql, [dats], (error, results, field) => {
+      if (error) reject(error)
+      else resolve(results)
+    })
+    connection.end()
+  })
+}
 
 
 //---usuarios--//

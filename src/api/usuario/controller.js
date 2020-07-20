@@ -15,7 +15,9 @@ import {
   addIng,
   obtenerIngDespensa,
   borrarIngDespensa,
-  getUsuarioId
+  getUsuarioId,
+  listaRecetas,
+  listaMisRecetas
 
 } from './model'
 import { response } from 'express';
@@ -192,6 +194,29 @@ export const ingrediente = (req, res) => {
 export const obtenerIng = (req, res) => {
   console.log('obtener ingrediente')
   listaIngrediente()
+    .then(result => {
+      console.log(result,"acaaa")
+      res.json(result)
+    })
+    .catch(error => {
+      res.json(error)
+    })
+}
+
+export const allRecetas = (req, res) => {
+  console.log('obtener todas las recetas')
+  listaRecetas()
+    .then(result => {
+      console.log(result,"acaaa")
+      res.json(result)
+    })
+    .catch(error => {
+      res.json(error)
+    })
+}
+export const misRecetas = (req, res) => {
+  console.log('obtener mis las recetas')
+  listaMisRecetas()
     .then(result => {
       console.log(result,"acaaa")
       res.json(result)
