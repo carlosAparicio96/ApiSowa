@@ -26,7 +26,9 @@ import {
   getUsuario,
   allRecetas,
   misRecetas,
-  BuscarNombreUsuario
+  BuscarNombreUsuario,
+  BuscarCorreoUsuario,
+  BuscarPasswordUsuario
 } from './controller'
 const router = new Router()
 /* router.post('/children', obtenerHijos)
@@ -53,7 +55,9 @@ router.post('/deleteIngDesp',eliminarIngDesp)
 router.post('/getUsuario',getUsuario)
 router.get('/getAllRecetas',allRecetas)
 router.post('/getMisRecetas',misRecetas)
-router.post('/BuscarNombreUsuario',BuscarNombreUsuario)
+router.post('/BuscarNombUsuario',BuscarNombreUsuario)
+router.post('/BuscarCorreoUsuario',BuscarCorreoUsuario)
+router.post('BuscarPasswordUsuario',BuscarPasswordUsuario)
 
 /* router.post('/:id', obtenerApoderado)
 router.get('', obtenerApoderados)

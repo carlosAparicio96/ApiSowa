@@ -18,7 +18,9 @@ import {
   getUsuarioId,
   listaRecetas,
   listaMisRecetas,
-  consultaNombreUsuario
+  consultaNombreUsuario,
+  consultaCorreoUsuario,
+  consultaPasswordUsuario
 
 } from './model'
 import { response } from 'express';
@@ -231,7 +233,7 @@ export const misRecetas = (req, res) => {
 //--Usuario--//
 
 export const inicioSesion = (req, res) => {
-  console.log("iniciar sesion")
+  console.log("iniciar sesion",req.body)
   obtenerUsuario(req.body).then(
     result => {
       console.log(result,"acaaa")
@@ -286,10 +288,36 @@ export const inicioSesion = (req, res) => {
     )
   }
   export const BuscarNombreUsuario = (req, res) => {
-    console.log("get usuario id")
+    console.log("get usuario id",req.body)
     consultaNombreUsuario(req.body).then(
       result => {
-        console.log(result[1],"acaaa")
+        console.log(result,"acaaa")
+        res.send(result)
+      },
+      error => {
+        console.log('ERRORAZO')
+        res.json({ error: error })
+      }
+    )
+  }
+  export const BuscarCorreoUsuario = (req, res) => {
+    console.log("get usuario id",req.body)
+    consultaCorreoUsuario(req.body).then(
+      result => {
+        console.log(result,"acaaa")
+        res.send(result)
+      },
+      error => {
+        console.log('ERRORAZO')
+        res.json({ error: error })
+      }
+    )
+  }
+  export const BuscarPasswordUsuario = (req, res) => {
+    console.log("get usuario id",req.body)
+    consultaPasswordUsuario(req.body).then(
+      result => {
+        console.log(result,"acaaa")
         res.send(result)
       },
       error => {

@@ -539,10 +539,10 @@ export const consultaNombreUsuario = dato => {
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
-    var dats= [
-      dato.idUsuario,
-    ]
     console.log(dato)
+    var dats=[
+      dato.idUsuario
+    ]
     var sql = 'select nombreUsr from Usuario where idUsuario=?'
     connection.query(sql, dats, (error, results, field) => {
      /*  console.log(results,"esta wea",results.length," - ",field) */
