@@ -426,6 +426,7 @@ export const obtenerIngDespensa = data => {
 }
 
 export const borrarIngDespensa = datos => {
+  console.log(datos);
   return new Promise((resolve, reject) => {
     const connection = mysql.createConnection(mysqlConfig)
     connection.connect()
@@ -433,7 +434,7 @@ export const borrarIngDespensa = datos => {
       datos.idUsuario,
       datos.idIngred,
     ]
-    var sql = 'DELETE FROM Despensa WHERE (idUsuario, idIngred) = (?)'
+    var sql = 'DELETE FROM Despensa WHERE idUsuario=? and idIngred=?'
     connection.query(sql, dats, (error, results, field) => {
       if (error) reject(error)
       else resolve(results)
